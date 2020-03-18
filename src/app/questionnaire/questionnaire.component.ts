@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Question } from '../question.model';
 
 @Component({
   selector: 'app-questionnaire',
@@ -7,13 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionnaireComponent implements OnInit {
 
-  constructor() { }
+  questionArray:Question[];
+  
+
+  constructor() { 
+  
+  }
 
 
 
   newQuestion(){
-        
+    
+
+   var question:Question = new Question("elso","masodik");
+
+    this.questionArray.push(question);
+
+    console.log(this.questionArray);
+
    
+    
+    
+   
+  
   }
 
 
