@@ -8,11 +8,11 @@ import { Question } from '../question.model';
 })
 export class QuestionnaireComponent implements OnInit {
 
-  questionArray:Question[];
-  
+  questionArray:Question[] =[];
+  questionId:number = 0;
 
   constructor() { 
-  
+   
   }
 
 
@@ -20,19 +20,33 @@ export class QuestionnaireComponent implements OnInit {
   newQuestion(){
     
 
-   var question:Question = new Question("elso","masodik");
-
+    var question:Question = new Question("","",this.questionId);
+    this.questionId += 1;
     this.questionArray.push(question);
-
-    console.log(this.questionArray);
-
-   
     
-    
-   
+    for(var i = 0; i< this.questionArray.length;++i){
+      console.log(this.questionArray[i].questionId);
+    }
+    console.log(question);
+
   
   }
+  deleteQuestion(questionId){
+    console.log("questionId:");
+    console.log(questionId);
+    for(var i= 0; i < this.questionArray.length;++i){
+      if(this.questionArray[i]== questionId){
+        console.log("törlés");
+        this.questionArray.splice(i,1);
+      }
+    }
+    
+    console.log(this.questionArray);
+  }
+  saveQuestionnaire(){
 
+    console.log("SAVED");
+  }
 
   ngOnInit(): void {
   }

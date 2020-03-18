@@ -1,8 +1,42 @@
 
 
-<button type="button" class="btn btn-primary" [routerLink]="['']">Vissza</button >
-<button type="button" class="btn btn-primary" (click)="newQuestion()">Kérdés hozzáadása</button >
+
+ <div class="questionnaire-container">
+        <button type="button" class="btn btn-primary" [routerLink]="['']">Vissza</button >
+        <button type="button" class="btn btn-primary" (click)="newQuestion()">Kérdés hozzáadása</button >
+    
+        
+            <div *ngFor="let question of questionArray" class = "question-container">
+                <div>
+                    {{question.questionText}}
+                    <br>
+                    {{question.questionAnswer}}
+                    <br>
+                    {{question.questionType}}
+                    <br>
+                   
+                </div>
+                
+        
+                
+                <input name="Question" (input)="question.questionText = $event.target.value"><br>
+        
+                <input  name= "Answer" (input)="question.questionAnswer = $event.target.value"><br>
+        
+                <select>
+                    <option value="comboBox">ComboBox</option>
+                    <option value="text">Text</option>
+                    <option value="textArea">TextArea</option>
+                    <option value="radioButton">Radio Button</option>
+                </select>
+                <button type="button" class="btn btn-primary" (click)="deleteQuestion(questionId)">Kérdés törlése</button >
+            </div>
+
+            <button type="button" class="btn btn-primary" (click)="saveQuestionnaire()">Kérdőív Mentése</button >
 
 
-    <div *ngFor="let question of questionArray">
-    </div>
+ </div>
+
+
+
+
